@@ -1,0 +1,112 @@
+{% extends 'baseNEW.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<main style="padding-top:0px;">
+
+  <section class="py-5 text-center container" style="margin-top:10%; width: 100%; height: 100%">
+    <div class="row py-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Галерея</h1>
+        <p class="lead text-muted text-center">Здесь представленны уже готовые цветы. Некоторые из них есть в наличии. Другие представлены в виде портфолио.</p>
+        <p class="text-center" style="margin-top: 10%;">
+          <a href="/gallery_work" class="btn btn-primary my-2">Есть в наличии</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!--в классе был прописан bg-light, убрал и прописал стайл с нужным цветом-->
+  <div style="" class="album pt-5">
+    <div class="container">
+
+      <!-- тут был класс class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" который перенес в ul-->
+      <!-- выравнивает квадратики, пол дня потратил на его выявление-->
+      <!--<div class="">-->
+
+
+
+        <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ms-3" style="padding-left: 0px;">
+        {% for p in products %}
+
+
+
+          <li id="listitem" class="row" style="margin-bottom: 4%;">
+
+        <div class="col">
+          <div class="card shadow-sm">
+
+
+<!--                {% with 'media/'|add:p.imageMain as url %}          Конкатенация    -->
+<!--                {% endwith %}-->
+            {% with p.imageMain.url as url %}
+
+            <img class="bd-placeholder-img card-img-top" src="{{ url }}">
+                {% endwith %}
+
+            <div class="card-body">
+              <!--<p class="card-text">{{o.discribe}}</p>-->
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn btn-sm">
+                  <a href="{{ p.get_absolute_url }}"><button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button></a>
+                  <!--<button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>-->
+
+                </div>
+                <small class="text-muted">{{ p.name }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+
+
+      </div>
+    </div>
+
+
+
+
+</main>
+
+<div style="height: 45rem;"></div>
+
+
+<script>
+    var b = document.querySelector('body');
+
+    function updateBackground() {
+        if (window.innerWidth > 768) {
+            // Настройки для больших экранов
+            b.style.background = 'url(/static/images/NEW.png) no-repeat center center fixed';
+            b.style.backgroundSize = 'cover';
+            b.style.setProperty('-webkit-background-size', 'cover');
+            b.style.setProperty('-moz-background-size', 'cover');
+            b.style.setProperty('-o-background-size', 'cover');
+        } else {
+            // Полностью очищает фон для маленьких экранов
+            b.style.background = 'none';
+            b.style.backgroundColor = '#E0FFFF'; // Оставляем только цвет
+
+        }
+    }
+
+    b.style.setProperty('height', '100px');
+
+    // 1. Запуск при загрузке страницы
+    updateBackground();
+
+    // 2. Запуск каждый раз при изменении размера окна
+    window.addEventListener('resize', updateBackground);
+</script>
+
+
+
+
+{% endblock %}

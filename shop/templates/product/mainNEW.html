@@ -1,0 +1,150 @@
+{% extends 'baseNEW.html' %}
+{% load static %}
+
+{% block content %}
+
+<main class="container d-flex flex-column " style="margin-top: 5rem;" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="" >
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img src="\static\images\NEWhdcolour1.jpg" width="100%" height="100%"></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Войти в галерею</h1>
+            <p>Просмотр готовых изделий</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'shop:product_list'%}">Войти</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img src="\static\images\NEWinstruments.jpeg" width="100%" height="100%" ></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Материалы и способы изготовления</h1>
+            <p class="text-center">Узнать из чего и каким образом производятся наши цветы</p>
+            <p class="text-center"><a class="btn btn-lg btn-primary disabled" href="#">Узнать больше</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg img-fluid ms-auto me-auto" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img width="100%" height="100%" src="\static\images\tableFLOWER.jpg"></svg>
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>Инфо</h1>
+            <p class="text-end">Дополнительная информация</p>
+            <p class="text-end"><a class="btn btn-lg btn-primary disabled" href="#">Узнать</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="/static/images/good2.png" class="bd-placeholder-img" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+
+        <h2>Качество</h2>
+        <p>Наши изделия делаются из натуральных материалов, особым способом, что позволяет им оставаться долговечными</p>
+
+        <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>--> <!--Кнопка была-->
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="/static/images/time.png" class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+
+        <h2>Время</h2>
+        <p>На изготовление одного цветка уходит от 2х дней до недели - в зависимости от сложности изделия и наличия материалов</p>
+
+        <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->  <!--Кнопка была-->
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="/static/images/care.png" class="bd-placeholder-img" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+
+        <h2>Безопасность</h2>
+        <p>Все материалы учавствующие в создании цветка натуральны. Они указаны в его описании. При наличии аллергии ОСОБЕННО внимательно ознакомьтесь с составом цветка.</p>
+
+        <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->    <!--Кнопка была-->
+
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div id="textnearimg" class="col-md-7">
+        <h2 class="featurette-heading"><span class="text-muted">Прекрасны в любом месте!</span></h2>
+        <p id="simpleP" class="lead">Украсьте любой уголок своего дома или рабочего пространства. Цветы добавят уюта вашему гнездышку, а так же привнесут изящества в любой, даже самый строгий кабинет.</p>
+      </div>
+      <div id="picture" class="col-md-5 tilt">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="\static\images\Тестовый.png" height="500" width="500">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div id="textnearimg" class="col-md-7 order-md-2">
+        <h2 class="featurette-heading"><span class="text-muted">Прекрасны всегда!</span></h2>
+        <p id="simpleP" class="lead">В отличии от обычных цветов - наши цветы постоянно свежи и прекрасны. Ваши гости
+     непременно заинтересуются, как вам удается постоянно поддерживать у себя свежие цветы!</p>
+      </div>
+      <div id="picture" class="col-md-5 order-md-1 tilt2">
+        <img src="\static\images\Синий-цветок.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div id="textnearimg" class="col-md-7">
+        <h2 class="featurette-heading"><br><span class="text-muted">Прекрасны, потому что Вы так хотите!</span></h2>
+        <p id="simpleP" class="lead">Мы можем изготавливать изделия любой формы и цвета! Хотите обычный цветок, но не стандартной пропорции - не проблема. А может вам пришел в голову образ и вы захотели воплотить его
+        - пожалуйста, для художника нет границ! </p>
+      </div>
+      <div id="picture3" class="col-md-5 tilt">
+        <img src="\static\images\Оранжевый-цветок.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+</main>
+{% endblock %}

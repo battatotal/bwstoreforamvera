@@ -1,0 +1,183 @@
+{% extends "baseNEW.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<main class=" d-flex flex-column p-2" style="height: 100%;">
+  {% if cart|length == 0 %}
+    <h1 style="margin-top: 7rem;">В корзине нет товаров!</h1>
+  {% else %}
+    <h1 style="margin-top: 7rem;">Ваша корзина</h1>
+  {% endif %}
+    <div class="table-responsive mt-5">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Изображение</th>
+            <th>Продукт</th>
+            <th>Количество</th>
+            <th>Удалить</th>
+            <th>Цена за штуку</th>
+            <th>Общая цена</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart %}
+            {% with product=item.product %}
+              <tr>
+                <td>
+                  <a href="{{ product.get_absolute_url }}">
+                    <img id="img" height="180px" src="{% if product.imageMain %}{{ product.imageMain.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                  </a>
+                </td>
+                <td>{{ product.name }}</td>
+                <td>
+
+                  <form id="tableForm" action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {% csrf_token %}
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update }}
+                    <input type="submit" value="Обновить">
+                  </form>
+                </td>
+                <!--<td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>-->
+                <td><form action="{% url 'cart:cart_remove' product.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; color: #007bff; padding:0; cursor:pointer; text-decoration:underline;">
+                        Удалить
+                    </button>
+                </form>
+                </td>
+                <td class="num">{{ item.price }} руб.</td>
+                <td class="num">{{ item.total_price }} руб.</td>
+
+              </tr>
+            {% endwith %}
+          {% endfor %}
+
+        </tbody>
+       </table>
+    </div>
+
+
+
+  <div id="toorder" class="d-flex justify-content-end mt-4 me-2">
+
+    <div class="align-self-center"><a href="{% url 'shop:product_list' %}" class="btn btn-primary me-3">Продолжить покупки</a>
+    </div>
+        {% if cart|length > 0 %}
+        <div class="align-self-center"><a href="{% url 'orders:order_create' %}" class="btn btn-lg btn-primary">
+          Подтвердить
+        </a></div>
+        {% else %}
+        <div class="align-self-center"><a href="{% url 'orders:order_create' %}" class="btn btn-lg btn-primary disabled">
+          Подтвердить
+        </a></div>
+        {% endif %}
+
+      </div>
+
+
+</main>
+
+
+<div style="height: 45rem;"></div>
+
+{% if cart|length == 0 %}
+<script>
+  tbl = document.querySelector('.table-responsive')
+  tord = document.querySelector('#toorder')
+  tbl.replaceWith(tord)
+  tord.setAttribute('class', 'd-flex justify-content-center')
+  tord.setAttribute('style', 'padding-top: 10rem; padding-bottom: 8rem;')
+</script>
+{% endif %}
+
+<!--{% if cart|length == 0 %}-->
+<!--<script>-->
+
+<!--  tbl = document.querySelector('.table-responsive')-->
+<!--  tbl.remove()-->
+
+<!--  forextramargin = document.getElementById('toorder')-->
+<!--  forextramargin.classList.remove('mt-4')-->
+
+<!--  var w = parseFloat(window.innerWidth)-->
+
+<!--  w >= 709 ? forextramargin.style.marginTop = 18.9 + 'rem' : forextramargin.style.marginTop = 15.75 + 'rem'-->
+
+
+<!--</script>-->
+<!--{% endif %}-->
+
+<!--______________-->
+<!--{% if cart|length == 0 %}-->
+<!--<script>-->
+<!--  let tbl = document.querySelector('.table-responsive');-->
+<!--  tbl.classList.remove('table-responsive')-->
+<!--  tbl.setAttribute('class', 'table mt-5')-->
+
+<!--  let theadold = document.querySelector('.table > thead');-->
+<!--  theadold.remove()-->
+<!--  let thead = document.createElement("thead");-->
+
+
+<!--  var w = parseFloat(window.innerWidth)-->
+<!--  console.log(w)-->
+<!--  if (w < 670) {-->
+<!--     thead.setAttribute('height', '88.500px');-->
+<!--     let toorder = document.querySelector('#toorder');-->
+<!--     toorder.setAttribute('style', 'padding-top: 0rem !important;');-->
+<!--     } else if (w < 722) {-->
+<!--     thead.setAttribute('height', '88.500px');-->
+<!--     }-->
+<!--     else if (w > 722 & w < 847) {-->
+<!--     thead.setAttribute('height', '64.500px');-->
+<!--     } else {-->
+<!--     thead.setAttribute('height', '40.500px');-->
+<!--     }-->
+
+
+<!--  thead.setAttribute('style', 'padding: 8px;')-->
+<!--  tbl.append(thead)-->
+
+<!--  let tbody = document.createElement("tbody");-->
+<!--  let tr = document.createElement("tr");-->
+<!--  let td = document.createElement("td");-->
+<!--  td.setAttribute('style', 'padding: 0px;')-->
+
+<!--  let img = document.createElement("img");-->
+<!--  img.setAttribute('id', 'img')-->
+<!--  img.setAttribute('height', '180px')-->
+
+<!--  td.append(img)-->
+<!--  tr.append(td)-->
+<!--  tbody.append(tr)-->
+<!--  tbl.append(tbody);-->
+
+
+<!--</script>-->
+<!--{% endif %}-->
+
+
+<!--____________________-->
+<!--{% if cart|length == 0 %}-->
+<!--<script>-->
+<!--  let tabres = document.querySelector('.table-responsive');-->
+<!--  st =  window.getComputedStyle(tabres);-->
+<!--  height = st.getPropertyValue("height");-->
+<!--  console.log(parseFloat(height));-->
+
+<!--  let table = document.createElement("table");-->
+<!--  table.setAttribute('height', [height]);-->
+<!--  table.setAttribute('class', 'mt-5')-->
+
+<!--  tabres.replaceWith(table)-->
+<!--</script>-->
+<!--{% endif %}-->
+
+<!--{% endblock %}-->
