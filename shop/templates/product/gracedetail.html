@@ -1,0 +1,178 @@
+{% extends 'baseNEW.html' %}
+{% load static %}
+
+{% block content %}
+<main class="d-flex flex-column" xmlns="http://www.w3.org/1999/html">
+
+    <div id="carouselMainImgDiv" class="conteiner" style="background-color: #FFFFFF; margin-top: 7rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+        <div class="row p-4  align-items-center rounded-3 " style="margin: 0px !important;">
+
+            <div class=" col-md-4 p-0 offset-lg-1 overflow-hidden">
+                <img class="rounded-lg-3" src="{{product.imageMain.url}}" alt="image" width="720">
+            </div>
+
+
+            <div id="textblock" class="col-md-7 col-lg-7 ps-md-5">  <!--в мд 7ку заменил на 12 и добавил col-lg-7(та 7ка)-->
+                <h2 id="descriptionTitle" class="featurette-heading">{{ product.name }}</h2>
+                <p class="lead">{{ product.description }}</p>
+                <br>
+                <br>
+                <div class="d-flex">
+                  <div class="col-4 ">
+                <span id="upspan" class="text-muted"><span id="spot">Размер: </span><b>{{product.size}}</b></span>
+                <br>
+                <span class="text-muted"><span id="spot">Материалы: </span><b>{{product.materials}}</b></span>
+                <br>
+                <span class="text-muted"><span id="spot">Цена: </span><b>{{product.price}}</b></span>
+                </div>
+                <div class="col-8 d-flex flex-column  justify-content-end">
+                    <form id="fr" style="color: #212529" class="d-flex flex-column align-self-end" action="{% url 'cart:cart_add' product.id %}" method="post">
+                     {{ cart_product_form }}
+                     {% csrf_token %}
+                     <button class="btn btn-primary" type="submit">В корзину</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+
+            <!--MODAL-->
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Перейти в Telegram</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Пока сайт находится в разработке, договориться с мастером по поводу заказов можно
+                      непосредственно в Telegram.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет, спасибо</button>
+                    <a href="http://telegram.org"><button type="button" class="btn btn-primary">Да, перейти</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!---->
+
+
+
+        </div>
+    </div>
+
+
+    <div>
+        <div class="container-fluid my-5">
+          <div class="row mt-5">
+            <div class="owl-carousel owl-theme">
+                <div class="item mb-4 p-3 rounded-bottom shadow" style="background-color: #FFFFFF;">
+                  <div class="card border-0 shadow">
+                    <a href="{{product.image1.url}}" data-lightbox="gallery1"><img class="gal" src="{{product.image1.url}}" alt="image" class="card-img-top"></a>
+
+                  </div>
+                </div>
+
+                <!--item -->
+                <div class="item mb-4 p-3 rounded-bottom shadow" style="background-color: #FFFFFF;">
+                  <div class="card border-0 shadow">
+                    <a href="{{product.image2.url}}" data-lightbox="gallery1"><img class="gal" src="{{product.image2.url}}" alt="image" class="card-img-top"></a>
+
+                  </div>
+                </div>
+
+                <!--item -->
+                <div class="item mb-4 p-3 rounded-bottom shadow" style="background-color: #FFFFFF;">
+                  <div class="card border-0 shadow">
+                    <a href="{{product.image3.url}}" data-lightbox="gallery1"><img class="gal" src="{{product.image3.url}}" alt="image" class="card-img-top"></a>
+
+                  </div>
+                </div>
+
+                <!--item -->
+                <div class="item mb-4 p-3 rounded-bottom shadow" style="background-color: #FFFFFF; ">
+                  <div class="card border-0 shadow">
+                    <a href="{{product.image4.url}}" data-lightbox="gallery1"><img class="gal" src="{{product.image4.url}}" alt="image" class="card-img-top"></a>
+
+                  </div>
+                </div>
+
+                <!--item -->
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+
+</main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  <!-- jquery подключил-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+  <!-- 1 скрипт с cdnjs-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   <!-- 5 скрипт с cdnjs-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+  <!-- 7 скрипт с cdnjs-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+  <!-- подключение скрипта Setup с https://owlcarousel2.github.io/OwlCarousel2/demos/basic.html-->
+
+  <script>
+          $('.owl-carousel').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:2
+              },
+              1000:{
+                  items:3
+              }
+          }
+      })
+
+  </script>
+
+  <script src="/static/js/lightbox-plus-jquery.js"></script>
+  <script>
+    lightbox.option({
+      'showImageNumberLabel': false,
+      'wrapAround': true
+
+    })
+  </script>
+
+  <script>
+        var selDiv = document.querySelector('#fr > div');
+        console.log(selDiv)
+        selDiv.setAttribute('class', 'p-1')
+
+        var sel = document.querySelector('#fr > div > select');
+        sel.setAttribute('class', 'mb-2 form-select-sm')
+  </script>
+
+
+{% endblock %}

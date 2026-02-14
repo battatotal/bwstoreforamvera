@@ -1,0 +1,13 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.10
+
+run:
+  persistenceMount: /data
+  containerPort: 8080
+  # Команда ниже:
+  # 1. Применяет миграции к БД в /data
+  # 2. Запускает сервер на порту 8080
+  command: python manage.py collectstatic --noinput && python manage.py migrate && waitress-serve --port 8080 bloomwebstoreforamvera.wsgi:application

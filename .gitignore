@@ -1,0 +1,31 @@
+# Секретные файлы (самое важное!)
+.env
+
+# База данных (локальная)
+db.sqlite3
+
+# Статика и Медиа (локальные папки)
+staticfiles/
+media/
+
+# Python (временные файлы)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+*.pyc
+
+# Логи и временные файлы системы
+*.log
+.DS_Store
+Thumbs.db
+
+
+# Игнорировать все папки static в любых подпапках
+**/static/
+
+# прииспользовании collectstatic, игнорирую также финальную папку сбора, хотя staticfiles уже указана выше 
+/staticfiles/  
+/root_static/

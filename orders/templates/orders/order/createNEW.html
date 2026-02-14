@@ -1,0 +1,67 @@
+{% extends "baseNEW.html" %}
+
+
+
+{% block content %}
+<div class="p-4" style="height: 100%; margin-top: 5rem !important;" >
+  <h1>Подтверждение заказа</h1>
+
+
+    <h3 class="mt-5">Ваш заказ:</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.quantity }}x {{ item.product.name }}
+          <span>: {{ item.total_price|floatformat:"2" }} руб.</span>
+        </li>
+      {% endfor %}
+      </ul>
+
+    <p class="mt-3" style="font-weight: 500;">Итого: {{ cart.get_total_price|floatformat:"2" }} руб.</p>
+    <hr>
+
+<div class="mt-4">
+<form action="/" method="get"> <!-- в проде вернуть точку и вернуть метод post-->
+  <div class="mb-3">
+    <label for="id_first_name" class="form-label">Имя:</label>
+    <input disabled class="form-control" type="text" name="first_name" maxlength="50" required="" id="id_first_name">
+  </div>
+  <div class="mb-3">
+    <label for="id_last_name" class="form-label">Фамилия:</label>
+    <input disabled class="form-control" type="text" name="last_name" maxlength="50" required="" id="id_last_name">
+  </div>
+  <div class="mb-3">
+    <label for="id_email" class="form-label">Email:</label>
+    <input disabled class="form-control" type="email" name="email" maxlength="254" required="" id="id_email">
+  </div>
+  <div class="mb-3">
+    <label for="id_address" class="form-label">Адрес:</label>
+    <input disabled class="form-control" type="text" name="address" maxlength="250" required="" id="id_address">
+  </div>
+  <div class="mb-3">
+    <label for="id_postal_code" class="form-label">Почтовый индекс:</label>
+    <input disabled class="form-control" type="text" name="postal_code" maxlength="20" required="" id="id_postal_code">
+  </div>
+  <div class="mb-3">
+    <label for="id_city" class="form-label">Город:</label>
+    <input disabled class="form-control" type="text" name="city" maxlength="100" required="" id="id_city">
+  </div>
+
+  <span title="В демонстрационной версии оформление заказа отключено" style="display: inline-block;">
+    <button disabled type="submit" class="btn btn-primary disabled mt-4" >Разместить заказ</button>
+  </span>
+  {% csrf_token %}
+</form>
+  <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; margin-top: 20px; border-radius: 5px;">
+    <p style="font-size: 14px; color: #6c757d; margin-bottom: 0;">
+        <strong>Примечание разработчика:</strong> Форма находится в демонстрационном режиме.
+        Атрибуты <code>disabled</code> установлены для предотвращения случайной передачи пустых данных.
+        Серверный обработчик деактивирован.
+    </p>
+</div>
+
+</div>
+</div>
+
+<div style="height: 17rem;"></div>
+{% endblock %}
